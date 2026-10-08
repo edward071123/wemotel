@@ -577,6 +577,7 @@ img {
   min-height: calc(100vh - var(--header-height));
   display: grid;
   grid-template-columns: 280px minmax(0, 1fr);
+  min-width: 0;
   background:
     linear-gradient(rgba(17, 17, 17, 0.92), rgba(17, 17, 17, 0.94)),
     url("./assets/home-hero.png") center / cover fixed;
@@ -668,6 +669,7 @@ img {
 
 .admin-sidebar {
   min-height: calc(100vh - var(--header-height));
+  min-width: 0;
   padding: 38px 28px;
   border-right: 1px solid rgba(183, 124, 44, 0.45);
   background: rgba(10, 10, 10, 0.9);
@@ -715,16 +717,24 @@ img {
 }
 
 .admin-main {
+  min-width: 0;
   padding: clamp(28px, 4vw, 72px);
 }
 
 .admin-manager-panel {
+  width: 100%;
+  min-width: 0;
   margin-bottom: 28px;
   border: 1px solid rgba(183, 124, 44, 0.48);
   background: rgba(16, 16, 16, 0.9);
   color: #e8e2d8;
   font-family: "Microsoft JhengHei", sans-serif;
   overflow: hidden;
+}
+
+.admin-manager-panel *,
+.admin-sidebar * {
+  min-width: 0;
 }
 
 .manager-heading {
@@ -2747,12 +2757,13 @@ img {
   }
 
   .admin-shell {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .admin-sidebar {
     min-height: 0;
-    padding: 18px;
+    overflow: hidden;
+    padding: 16px 14px;
     border-right: 0;
     border-bottom: 1px solid rgba(183, 124, 44, 0.45);
   }
@@ -2770,37 +2781,47 @@ img {
   }
 
   .admin-menu {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 10px;
-    overflow-x: auto;
-    padding-bottom: 6px;
-    scroll-snap-type: x proximity;
-    -webkit-overflow-scrolling: touch;
+    overflow: visible;
+    padding-bottom: 0;
   }
 
   .admin-menu a {
-    flex: 0 0 auto;
-    min-width: 104px;
+    min-width: 0;
     padding: 11px 14px;
     font-size: 14px;
     text-align: center;
-    white-space: nowrap;
-    scroll-snap-align: start;
+    white-space: normal;
   }
 
   .admin-main {
-    padding: 30px 18px 42px;
+    padding: 18px 28px 36px 14px;
   }
 
   .manager-heading {
     display: grid;
-    padding: 20px 18px;
+    gap: 16px;
+    padding: 18px 16px;
+  }
+
+  .manager-heading h2 {
+    font-size: 26px;
   }
 
   .manager-heading-actions {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     justify-items: start;
     gap: 12px;
+    width: 100%;
+  }
+
+  .manager-heading-actions button,
+  .manager-heading-actions span {
+    flex: 1 1 148px;
+    max-width: 100%;
   }
 
   .manager-table {
@@ -2819,17 +2840,37 @@ img {
 
   .ticket-summary {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    padding: 16px 18px;
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .ticket-summary article {
+    padding: 14px;
   }
 
   .storage-toolbar {
     grid-template-columns: 1fr;
-    padding: 16px 18px;
+    padding: 14px;
+  }
+
+  .storage-toolbar select,
+  .storage-toolbar input,
+  .storage-toolbar button {
+    width: 100%;
+  }
+
+  .ticket-toggle-row {
+    justify-content: stretch;
+    padding: 0 14px 14px;
+  }
+
+  .branch-summary-toggle {
+    width: 100%;
   }
 
   .housekeeping-toolbar,
   .floor-plan-wrap {
-    padding: 16px 18px;
+    padding: 14px;
   }
 
   .floor-plan {
@@ -2860,11 +2901,32 @@ img {
 
   .dashboard-report-grid,
   .dashboard-report-block {
-    padding: 18px;
+    padding: 14px;
   }
 
   .dashboard-section-title {
     display: grid;
+    gap: 8px;
+  }
+
+  .dashboard-section-title h3 {
+    font-size: 24px;
+  }
+
+  .dashboard-ticket-cards article,
+  .dashboard-profit-branches article,
+  .dashboard-chart-card {
+    padding: 14px;
+  }
+
+  .dashboard-ticket-cards p,
+  .dashboard-ticket-cards b,
+  .dashboard-profit-branches strong,
+  .branch-ticket-summary p,
+  .manager-table td {
+    line-break: anywhere;
+    word-break: break-word;
+    overflow-wrap: anywhere;
   }
 
   .dashboard-ticket-cards,
@@ -2922,7 +2984,7 @@ img {
 
   .branch-ticket-summary {
     grid-template-columns: 1fr;
-    padding: 0 18px 18px;
+    padding: 0 14px 14px;
   }
 
   .manager-actions button {
@@ -3081,6 +3143,20 @@ img {
     font-family: "Microsoft JhengHei", sans-serif;
     font-size: 15px;
     line-height: 1.7;
+  }
+}
+
+@media (max-width: 380px) {
+  .admin-sidebar {
+    padding-inline: 12px;
+  }
+
+  .admin-main {
+    padding-inline: 10px;
+  }
+
+  .ticket-summary {
+    grid-template-columns: 1fr;
   }
 }
 
