@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>管理系統｜薇風情汽車旅館</title>
+    <meta name="description" content="薇風情汽車旅館管理系統入口，包含管理者、票卷管理、倉儲管理與報表管理。" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="./index.html" aria-label="薇風情 Motel 首頁">
+        <img src="./assets/logo.png" alt="薇風情 MOTEL" />
+      </a>
+      <button class="menu-toggle" type="button" aria-label="開啟選單" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" aria-label="主要選單">
+        <div class="nav-item has-submenu">
+          <a class="nav-link" href="./index.html#branches">服務據點 <span aria-hidden="true">⌄</span></a>
+          <div class="submenu">
+            <a href="./index.html#branches">高雄鳳山館</a>
+            <a href="./index.html#branches">高雄自由館</a>
+            <a href="./index.html#branches">高雄湖內館</a>
+            <a href="./index.html#branches">台南六甲館</a>
+            <a href="./index.html#branches">屏東潮州館</a>
+          </div>
+        </div>
+        <span class="nav-divider"></span>
+        <div class="nav-item has-submenu">
+          <a class="nav-link" href="./kaohsiung.html">景點特搜 <span aria-hidden="true">⌄</span></a>
+          <div class="submenu scenic-submenu">
+            <a href="./kaohsiung.html">高雄景點</a>
+            <a href="./tainan.html">台南景點</a>
+            <a href="./pingtung.html">屏東景點</a>
+          </div>
+        </div>
+        <span class="nav-divider"></span>
+        <a class="nav-link" href="./about.html">聯絡我們</a>
+        <span class="nav-divider"></span>
+        <a class="nav-link" href="./living-room.html">常見Q&A</a>
+        <span class="nav-divider"></span>
+        <a class="nav-link is-active" href="./management.html">管理系統</a>
+      </nav>
+    </header>
+
+    <main class="admin-shell is-locked">
+      <section class="login-panel" aria-label="管理系統登入">
+        <form class="login-card" autocomplete="off">
+          <span>WEMOTEL</span>
+          <h1>管理系統登入</h1>
+          <label>
+            帳號
+            <input name="username" type="text" value="" placeholder="請輸入帳號" />
+          </label>
+          <label>
+            密碼
+            <input name="password" type="password" value="" placeholder="請輸入密碼" />
+          </label>
+          <p class="login-error" aria-live="polite"></p>
+          <button type="submit">登入</button>
+        </form>
+      </section>
+
+      <aside class="admin-sidebar" aria-label="管理系統選單">
+        <div class="admin-brand">
+          <span>WEMOTEL</span>
+          <strong>管理系統</strong>
+        </div>
+        <nav class="admin-menu">
+          <a class="is-current" href="#dashboard">Dashboard</a>
+          <a href="#admin">管理者</a>
+          <a href="#tickets">票卷管理</a>
+          <a href="#storage">倉儲管理</a>
+          <a href="#housekeeping">房務報修</a>
+          <a href="#reports">報表管理</a>
+        </nav>
+      </aside>
+
+      <section class="admin-main">
+        <section id="dashboard" class="admin-manager-panel admin-view" aria-label="Dashboard">
+          <div class="manager-heading">
+            <div>
+              <p>Dashboard</p>
+              <h2>本月營運概覽</h2>
+            </div>
+            <div class="manager-heading-actions">
+              <span>2026 / 10</span>
+            </div>
+          </div>
+          <div class="dashboard-report-grid">
+            <section class="dashboard-report-block">
+              <div class="dashboard-section-title">
+                <p>Ticket Report</p>
+                <h3>本月票卷報表</h3>
+              </div>
+              <div class="dashboard-ticket-cards">
+                <article><span>高雄鳳山館</span><strong>游泳</strong><p>入庫 2,000｜已售出 755｜已使用 260｜未使用 495</p><b>$2,642,500</b></article>
+                <article><span>高雄自由館</span><strong>休息</strong><p>入庫 2,500｜已售出 1,155｜已使用 385｜未使用 770</p><b>$4,042,500</b></article>
+                <article><span>高雄湖內館</span><strong>休息</strong><p>入庫 1,200｜已售出 410｜已使用 136｜未使用 274</p><b>$1,435,000</b></article>
+                <article><span>台南六甲館</span><strong>游泳</strong><p>入庫 800｜已售出 165｜已使用 55｜未使用 110</p><b>$577,500</b></article>
+                <article><span>屏東潮州館</span><strong>休息</strong><p>入庫 500｜已售出 120｜已使用 40｜未使用 80</p><b>$420,000</b></article>
+              </div>
+            </section>
+
+            <section class="dashboard-report-block">
+              <div class="dashboard-section-title">
+                <p>Profit And Loss</p>
+                <h3>本月損益表</h3>
+              </div>
+              <div class="dashboard-profit-branches">
+                <article>
+                  <div><span>高雄鳳山館</span><strong>$1,882,213</strong><p>營業收入</p></div>
+                  <dl><dt>營業成本</dt><dd>100%</dd><dt>電費</dt><dd>$149,566</dd><dt>水費</dt><dd>$10,358</dd><dt>營業毛利</dt><dd>$1,722,289</dd><dt>毛利率</dt><dd>91.5%</dd></dl>
+                </article>
+                <article>
+                  <div><span>高雄自由館</span><strong>$1,654,800</strong><p>營業收入</p></div>
+                  <dl><dt>營業成本</dt><dd>92%</dd><dt>電費</dt><dd>$132,400</dd><dt>水費</dt><dd>$8,950</dd><dt>營業毛利</dt><dd>$1,513,450</dd><dt>毛利率</dt><dd>91.4%</dd></dl>
+                </article>
+                <article>
+                  <div><span>高雄湖內館</span><strong>$1,435,000</strong><p>營業收入</p></div>
+                  <dl><dt>營業成本</dt><dd>88%</dd><dt>電費</dt><dd>$118,200</dd><dt>水費</dt><dd>$7,640</dd><dt>營業毛利</dt><dd>$1,309,160</dd><dt>毛利率</dt><dd>91.2%</dd></dl>
+                </article>
+                <article>
+                  <div><span>台南六甲館</span><strong>$577,500</strong><p>營業收入</p></div>
+                  <dl><dt>營業成本</dt><dd>73%</dd><dt>電費</dt><dd>$52,300</dd><dt>水費</dt><dd>$4,180</dd><dt>營業毛利</dt><dd>$521,020</dd><dt>毛利率</dt><dd>90.2%</dd></dl>
+                </article>
+                <article>
+                  <div><span>屏東潮州館</span><strong>$420,000</strong><p>營業收入</p></div>
+                  <dl><dt>營業成本</dt><dd>68%</dd><dt>電費</dt><dd>$38,600</dd><dt>水費</dt><dd>$3,280</dd><dt>營業毛利</dt><dd>$378,120</dd><dt>毛利率</dt><dd>90.0%</dd></dl>
+                </article>
+              </div>
+            </section>
+
+            <section class="dashboard-report-block dashboard-chart-block">
+              <div class="dashboard-section-title">
+                <p>Daily Trend</p>
+                <h3>本月每日統計圖表</h3>
+              </div>
+              <div class="dashboard-chart-grid">
+                <article class="dashboard-chart-card">
+                  <h4>休息&住宿統計</h4>
+                  <svg viewBox="0 0 760 310" role="img" aria-label="本月每日休息與住宿次數統計">
+                    <g class="chart-grid-lines">
+                      <line x1="42" y1="40" x2="735" y2="40" /><line x1="42" y1="92" x2="735" y2="92" /><line x1="42" y1="144" x2="735" y2="144" /><line x1="42" y1="196" x2="735" y2="196" /><line x1="42" y1="248" x2="735" y2="248" />
+                    </g>
+                    <polyline class="line-rest" points="42,92 65,170 88,150 111,65 134,145 157,170 180,150 203,125 226,118 249,92 272,98 295,112 318,158 341,145 364,205 387,150 410,65 433,70 456,135 479,118 502,132 525,136 548,153 571,42 594,32 617,120 640,170 663,155 686,153 709,148 732,78" />
+                    <polyline class="line-stay" points="42,216 65,216 88,210 111,170 134,150 157,120 180,150 203,160 226,222 249,190 272,205 295,185 318,140 341,150 364,164 387,220 410,188 433,184 456,176 479,125 502,135 525,138 548,224 571,212 594,196 617,178 640,184 663,160 686,120 709,250 732,198" />
+                    <g class="chart-axis-labels">
+                      <text x="42" y="282">1</text><text x="134" y="282">5</text><text x="249" y="282">10</text><text x="364" y="282">15</text><text x="479" y="282">20</text><text x="594" y="282">25</text><text x="732" y="282">31</text>
+                    </g>
+                    <g class="chart-legend">
+                      <rect x="260" y="292" width="28" height="4" class="legend-rest" /><text x="296" y="302">休息次數</text>
+                      <rect x="420" y="292" width="28" height="4" class="legend-stay" /><text x="456" y="302">住宿次數</text>
+                    </g>
+                  </svg>
+                </article>
+                <article class="dashboard-chart-card">
+                  <h4>營業收入統計</h4>
+                  <svg viewBox="0 0 760 310" role="img" aria-label="本月每日營業收入統計">
+                    <g class="chart-grid-lines">
+                      <line x1="42" y1="40" x2="735" y2="40" /><line x1="42" y1="92" x2="735" y2="92" /><line x1="42" y1="144" x2="735" y2="144" /><line x1="42" y1="196" x2="735" y2="196" /><line x1="42" y1="248" x2="735" y2="248" />
+                    </g>
+                    <polyline class="line-income" points="42,202 65,214 88,208 111,142 134,52 157,200 180,232 203,218 226,150 249,138 272,172 295,142 318,162 341,202 364,228 387,182 410,158 433,156 456,96 479,150 502,166 525,178 548,176 571,168 594,128 617,122 640,172 663,180 686,166 709,188 732,154" />
+                    <g class="chart-axis-labels">
+                      <text x="42" y="282">1</text><text x="134" y="282">5</text><text x="249" y="282">10</text><text x="364" y="282">15</text><text x="479" y="282">20</text><text x="594" y="282">25</text><text x="732" y="282">31</text>
+                    </g>
+                    <g class="chart-legend">
+                      <rect x="315" y="292" width="28" height="4" class="legend-income" /><text x="351" y="302">每日營收</text>
+                    </g>
+                  </svg>
+                </article>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section id="admin" class="admin-manager-panel admin-view" aria-label="管理者列表" hidden>
+          <div class="manager-heading">
+            <div>
+              <p>Administrator</p>
+              <h2>管理者</h2>
+            </div>
+            <div class="manager-heading-actions">
+              <button class="admin-open-branches" type="button">管理館別</button>
+              <button class="manager-open-create" type="button">新增管理者</button>
+            </div>
+          </div>
+
+          <div class="manager-table-wrap">
+            <table class="manager-table">
+              <thead>
+                <tr>
+                  <th>排序</th>
+                  <th>名稱</th>
+                  <th>帳號</th>
+                  <th>可操作館別</th>
+                  <th>角色</th>
+                  <th>動作</th>
+                </tr>
+              </thead>
+              <tbody class="manager-table-body"></tbody>
+            </table>
+          </div>
+          <div class="manager-pagination" aria-label="管理者列表分頁"></div>
+        </section>
+
+        <section id="tickets" class="admin-manager-panel admin-view" aria-label="票卷管理" hidden>
+          <div class="manager-heading">
+            <div>
+              <p>Ticket</p>
+              <h2>票卷管理</h2>
+            </div>
+            <div class="manager-heading-actions">
+              <span>入庫紀錄與票券明細</span>
+            </div>
+          </div>
+
+          <div class="ticket-summary">
+            <article><span>已入庫總張數</span><strong>38,000</strong></article>
+            <article><span>待入庫總張數</span><strong>62,000</strong></article>
+            <article><span>票券總張數</span><strong>100,000</strong></article>
+            <article><span>票券總金額</span><strong>$70,000,000</strong></article>
+          </div>
+
+          <div class="ticket-toggle-row">
+            <button class="branch-summary-toggle" type="button" aria-expanded="false">展開各館別銷售狀態</button>
+          </div>
+          <div class="branch-ticket-summary" aria-label="各館票卷統計" hidden></div>
+
+          <div class="manager-table-wrap">
+            <table class="manager-table ticket-table">
+              <thead>
+                <tr>
+                  <th>館別</th>
+                  <th>票卷種類</th>
+                  <th>票券入庫起始號</th>
+                  <th>票券入庫尾號</th>
+                  <th>入庫日期</th>
+                  <th>入庫張數</th>
+                  <th>未售出</th>
+                  <th>已售出</th>
+                  <th>入庫人員</th>
+                  <th>動作</th>
+                </tr>
+              </thead>
+              <tbody class="ticket-table-body"></tbody>
+            </table>
+          </div>
+          <div class="ticket-pagination manager-pagination" aria-label="票卷入庫紀錄分頁"></div>
+        </section>
+
+        <section id="storage" class="admin-manager-panel admin-view" aria-label="倉儲管理" hidden>
+          <div class="manager-heading">
+            <div>
+              <p>Storage</p>
+              <h2>倉儲管理</h2>
+            </div>
+            <div class="manager-heading-actions">
+              <button class="storage-report-button" type="button">倉儲報表</button>
+            </div>
+          </div>
+
+          <div class="storage-toolbar">
+            <select class="storage-branch-filter" aria-label="篩選館別">
+              <option>全部館別</option>
+              <option>高雄鳳山館</option>
+              <option>高雄自由館</option>
+              <option>高雄湖內館</option>
+              <option>台南六甲館</option>
+              <option>屏東潮州館</option>
+            </select>
+            <select class="storage-department-filter" aria-label="篩選部門">
+              <option>全部部門</option>
+              <option>總倉</option>
+              <option>房務</option>
+              <option>櫃檯</option>
+              <option>餐飲</option>
+            </select>
+            <input class="storage-search-input" type="search" placeholder="請輸入搜尋產品名稱" aria-label="搜尋產品名稱" />
+            <button class="storage-search-button" type="button">搜尋</button>
+          </div>
+
+          <div class="manager-table-wrap">
+            <table class="manager-table storage-table">
+              <thead>
+                <tr>
+                  <th>館別</th>
+                  <th>部門</th>
+                  <th>名稱</th>
+                  <th>產品圖</th>
+                  <th>廠商</th>
+                  <th>容量</th>
+                  <th>單位</th>
+                  <th>價格</th>
+                  <th>庫存</th>
+                  <th>補貨/領貨歷程</th>
+                  <th>異動歷程</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody class="storage-table-body"></tbody>
+            </table>
+          </div>
+          <div class="storage-pagination manager-pagination" aria-label="倉儲列表分頁"></div>
+        </section>
+
+        <section id="housekeeping" class="admin-manager-panel admin-view" aria-label="房務報修" hidden>
+          <div class="manager-heading">
+            <div>
+              <p>Housekeeping</p>
+              <h2>房務報修</h2>
+            </div>
+            <div class="manager-heading-actions">
+              <span>房間狀態平面圖</span>
+            </div>
+          </div>
+
+          <div class="housekeeping-toolbar">
+            <label>
+              館別
+              <select class="housekeeping-branch-select" aria-label="房務報修館別">
+                <option>高雄鳳山館</option>
+                <option>高雄自由館</option>
+                <option>高雄湖內館</option>
+                <option>台南六甲館</option>
+                <option>屏東潮州館</option>
+              </select>
+            </label>
+            <div class="housekeeping-legend" aria-label="房間狀態說明">
+              <span><i class="status-normal"></i>正常可用</span>
+              <span><i class="status-supply"></i>需補給</span>
+              <span><i class="status-repair"></i>需報修</span>
+            </div>
+          </div>
+
+          <div class="floor-plan-wrap">
+            <div class="floor-plan">
+              <section class="floor-wing floor-top">
+                <div class="room-row" data-floor-row="101"></div>
+                <strong>101 - 105</strong>
+              </section>
+              <section class="floor-wing floor-left">
+                <div class="room-row" data-floor-row="201"></div>
+                <strong>201 - 206</strong>
+              </section>
+              <section class="floor-core">
+                <div>櫃檯</div>
+                <div>餐廳</div>
+              </section>
+              <section class="floor-wing floor-bottom">
+                <div class="room-row" data-floor-row="301"></div>
+                <strong>301 - 307</strong>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section id="reports" class="admin-manager-panel admin-view" aria-label="報表管理" hidden>
+          <div class="manager-heading">
+            <div>
+              <p>Report</p>
+              <h2>報表管理</h2>
+            </div>
+            <div class="manager-heading-actions">
+              <span>營運摘要與庫存票券統計</span>
+            </div>
+          </div>
+          <div class="report-toolbar">
+            <label>
+              報表類型
+              <select class="report-type-select" aria-label="報表類型">
+                <option value="revenue">年度營收統計</option>
+                <option value="profit">損益表</option>
+                <option value="ticket">票卷報表</option>
+              </select>
+            </label>
+            <label>
+              館別
+              <select class="report-branch-select" aria-label="報表館別">
+                <option>全部館別</option>
+                <option>高雄鳳山館</option>
+                <option>高雄自由館</option>
+                <option>高雄湖內館</option>
+                <option>台南六甲館</option>
+                <option>屏東潮州館</option>
+              </select>
+            </label>
+            <label>
+              起始日期
+              <input class="report-start-date" type="date" value="2026-10-01" aria-label="報表起始日期" />
+            </label>
+            <label>
+              結束日期
+              <input class="report-end-date" type="date" value="2026-10-08" aria-label="報表結束日期" />
+            </label>
+            <button class="report-export-button" type="button" disabled>匯出 Excel</button>
+          </div>
+          <div class="report-output" hidden>
+            <div class="report-preview-summary" aria-live="polite"></div>
+            <section class="report-sheet revenue-report report-export-source" data-report-sheet="revenue" aria-label="年度營收統計" hidden>
+              <div class="report-title">
+                <h3>薇風艾菲爾有限公司 115年度</h3>
+                <p>每月營業收入統計</p>
+              </div>
+              <div class="report-table-wrap">
+                <table class="report-table">
+                  <thead>
+                    <tr>
+                      <th>月</th>
+                      <th>休息次數</th>
+                      <th>住宿次數</th>
+                      <th>刷卡</th>
+                      <th>匯款</th>
+                      <th>現金</th>
+                      <th>每月營收</th>
+                      <th>營收漲跌</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>1月</td><td>753</td><td>499</td><td>506,408</td><td>59,100</td><td>1,033,780</td><td>1,599,288</td><td>持平</td></tr>
+                    <tr><td>2月</td><td>753</td><td>499</td><td>506,408</td><td>59,100</td><td>1,033,780</td><td>1,599,288</td><td>持平</td></tr>
+                    <tr><td>3月</td><td>753</td><td>499</td><td>506,408</td><td>59,100</td><td>1,033,780</td><td>1,599,288</td><td>持平</td></tr>
+                    <tr><td>4月</td><td>753</td><td>499</td><td>506,408</td><td>59,100</td><td>1,033,780</td><td>1,599,288</td><td>持平</td></tr>
+                    <tr><td>5月</td><td>753</td><td>499</td><td>506,408</td><td>59,100</td><td>1,033,780</td><td>1,599,288</td><td>持平</td></tr>
+                    <tr><td>6月</td><td>753</td><td>499</td><td>506,408</td><td>59,100</td><td>1,033,780</td><td>1,599,288</td><td>持平</td></tr>
+                    <tr><td>7月</td><td>753</td><td>499</td><td>506,408</td><td>59,100</td><td>1,316,705</td><td>1,882,213</td><td class="report-up">上漲18%</td></tr>
+                    <tr><td>8月</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td class="report-down">下降100%</td></tr>
+                    <tr><td>9月</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    <tr><td>10月</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    <tr><td>11月</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    <tr><td>12月</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                  </tbody>
+                  <tfoot>
+                    <tr><td>年計</td><td>3,765</td><td>2,495</td><td>3,544,856</td><td>413,700</td><td>7,236,460</td><td>11,195,016</td><td></td></tr>
+                  </tfoot>
+                </table>
+              </div>
+              <div class="report-mini-grid">
+                <div><span>休息單月平均</span><strong>538 次</strong></div>
+                <div><span>住宿單月平均</span><strong>312 次</strong></div>
+                <div><span>營業收入平均</span><strong>1,599,288 元整</strong></div>
+              </div>
+              <div class="report-chart" aria-label="每月營業收入折線圖">
+                <span>每月營業收入統計</span>
+                <svg viewBox="0 0 720 210" role="img" aria-label="每月營業收入趨勢">
+                  <polyline points="30,62 90,62 150,62 210,62 270,62 330,62 390,34 450,178 510,178 570,178 630,178 690,178" />
+                  <g>
+                    <circle cx="30" cy="62" r="5" /><circle cx="90" cy="62" r="5" /><circle cx="150" cy="62" r="5" /><circle cx="210" cy="62" r="5" />
+                    <circle cx="270" cy="62" r="5" /><circle cx="330" cy="62" r="5" /><circle cx="390" cy="34" r="5" /><circle cx="450" cy="178" r="5" />
+                    <circle cx="510" cy="178" r="5" /><circle cx="570" cy="178" r="5" /><circle cx="630" cy="178" r="5" /><circle cx="690" cy="178" r="5" />
+                  </g>
+                </svg>
+              </div>
+            </section>
+
+            <section class="report-sheet profit-report report-export-source" data-report-sheet="profit" aria-label="損益表" hidden>
+              <div class="report-title">
+                <h3>薇風艾菲爾有限公司</h3>
+                <p>損益表</p>
+              </div>
+              <div class="profit-grid">
+                <article>
+                  <h4>2026 年 7 月 1 日至 7 月 31 日</h4>
+                  <dl><dt>營業收入</dt><dd>$1,882,213</dd><dt>營業成本</dt><dd>100%</dd><dt>電費</dt><dd>$149,566 / 93.5%</dd><dt>水費</dt><dd>$10,358 / 6.5%</dd><dt>營業毛利</dt><dd>$1,722,289</dd><dt>毛利%</dt><dd>91.5%</dd></dl>
+                </article>
+                <article>
+                  <h4>2026 年 8 月 1 日至 8 月 31 日</h4>
+                  <dl><dt>營業收入</dt><dd>$460,996</dd><dt>營業成本</dt><dd>0%</dd><dt>電費</dt><dd>-</dd><dt>水費</dt><dd>-</dd><dt>營業毛利</dt><dd>$460,996</dd><dt>毛利%</dt><dd>91.5%</dd></dl>
+                </article>
+              </div>
+            </section>
+
+            <section class="report-sheet ticket-report report-export-source" data-report-sheet="ticket" aria-label="票卷報表" hidden>
+              <div class="report-title">
+                <h3>票卷報表</h3>
+                <p>依館別彙整入庫、銷售與使用狀態</p>
+              </div>
+              <div class="ticket-report-grid">
+                <article><span>高雄鳳山館</span><strong>游泳</strong><p>入庫 2,000｜已售出 755｜已使用 260｜未使用 495</p><b>$2,642,500</b></article>
+                <article><span>高雄自由館</span><strong>休息</strong><p>入庫 2,500｜已售出 1,155｜已使用 385｜未使用 770</p><b>$4,042,500</b></article>
+                <article><span>高雄湖內館</span><strong>休息</strong><p>入庫 1,200｜已售出 410｜已使用 136｜未使用 274</p><b>$1,435,000</b></article>
+                <article><span>台南六甲館</span><strong>游泳</strong><p>入庫 800｜已售出 165｜已使用 55｜未使用 110</p><b>$577,500</b></article>
+                <article><span>屏東潮州館</span><strong>休息</strong><p>入庫 500｜已售出 120｜已使用 40｜未使用 80</p><b>$420,000</b></article>
+              </div>
+            </section>
+          </div>
+        </section>
+
+      </section>
+    </main>
+
+    <div class="admin-modal" hidden>
+      <div class="admin-modal__panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button class="admin-modal__close" type="button" aria-label="關閉">×</button>
+        <h2 id="modal-title">新增管理者</h2>
+
+        <form class="modal-form modal-form-create" data-modal-form="create" autocomplete="off" hidden>
+          <label>名稱<input name="name" type="text" required /></label>
+          <label>帳號<input name="account" type="text" required /></label>
+          <label>密碼<input name="password" type="password" required /></label>
+          <label>密碼確認<input name="passwordConfirm" type="password" required /></label>
+          <label>管理館別<select name="branch" required></select></label>
+          <label>管理角色<select name="role" required></select></label>
+          <p class="modal-error" aria-live="polite"></p>
+          <button type="submit">新增</button>
+        </form>
+
+        <form class="modal-form modal-form-profile" data-modal-form="profile" autocomplete="off" hidden>
+          <label>名稱<input name="name" type="text" required /></label>
+          <label>帳號<input name="account" type="text" disabled /></label>
+          <p class="modal-note">帳號不可於基本資料修改。</p>
+          <button type="submit">儲存基本資料</button>
+        </form>
+
+        <form class="modal-form modal-form-password" data-modal-form="password" autocomplete="off" hidden>
+          <label>新密碼<input name="password" type="password" required /></label>
+          <label>密碼確認<input name="passwordConfirm" type="password" required /></label>
+          <p class="modal-error" aria-live="polite"></p>
+          <button type="submit">修改密碼</button>
+        </form>
+
+        <form class="modal-form modal-form-branch" data-modal-form="branch" autocomplete="off" hidden>
+          <label>管理館別<select name="branch" required></select></label>
+          <button type="submit">儲存館別</button>
+        </form>
+
+        <form class="modal-form modal-form-role" data-modal-form="role" autocomplete="off" hidden>
+          <label>管理角色<select name="role" required></select></label>
+          <button type="submit">儲存角色</button>
+        </form>
+
+        <form class="modal-form modal-form-branches" data-modal-form="branches" autocomplete="off" hidden>
+          <div class="option-manager">
+            <label>新增館別<input name="optionName" type="text" /></label>
+            <button type="button" data-option-add="branch">新增</button>
+          </div>
+          <div class="option-list" data-option-list="branch"></div>
+        </form>
+
+        <div class="modal-form ticket-detail-modal" data-modal-form="ticketDetails" hidden>
+          <div class="manager-table-wrap">
+            <table class="manager-table ticket-detail-table">
+              <thead>
+                <tr>
+                  <th>票卷編號</th>
+                  <th>票卷種類</th>
+                  <th>狀態</th>
+                  <th>售出時間</th>
+                  <th>是否已使用</th>
+                  <th>使用時間</th>
+                  <th>收款方式</th>
+                  <th>車牌</th>
+                </tr>
+              </thead>
+              <tbody class="ticket-detail-body"></tbody>
+            </table>
+          </div>
+          <div class="ticket-detail-pagination manager-pagination" aria-label="詳細票卷資料分頁"></div>
+        </div>
+
+        <div class="modal-form storage-history-modal" data-modal-form="storageHistory" hidden>
+          <div class="storage-history-list"></div>
+        </div>
+
+        <div class="modal-form housekeeping-room-modal" data-modal-form="housekeepingRoom" hidden>
+          <div class="housekeeping-room-detail"></div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <p>Copyright © 2025 薇風情 All Rights Reserved｜design by JDstudio</p>
+    </footer>
+    <script src="./script.js"></script>
+  </body>
+</html>
